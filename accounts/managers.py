@@ -1,4 +1,3 @@
-"""
 from django.contrib.auth.models import BaseUserManager
 
 
@@ -18,4 +17,4 @@ class MyUserManager(BaseUserManager):
 		user = self.create_user(email, full_name, password)
 		user.is_admin = True
 		user.save(using=self._db)
-		return user"""
+		return user

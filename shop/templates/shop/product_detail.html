@@ -1,13 +1,78 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h3>{{ product.name }}</h3>
-    <small>{{ product.created }}</small><p>{{ product.price }} Toman</p><br/>
-    <img src="{{ product.image.url }}" alt="" width="400px" height="400px">
-    <p>{{ product.description }}</p><br/><br/>
-    <form action="{% url 'cart:cart_add' product.id %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" class="btn btn-primary" value="Add to cart">
-    </form>
+<div class="container">
+    <div class="mb-3">
+        <a href="{% url 'shop:home' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Products
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="product-image-container">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid rounded shadow">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="product-details card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">{{ product.name }}</h2>
+                </div>
+                <div class="card-body">
+                    <div class="product-meta mb-4">
+                        <h3 class="text-primary">{{ product.price }} Toman</h3>
+                    </div>
+                    
+                    <div class="product-description mb-4">
+                        <h4>Product Description</h4>
+                        <p>{{ product.description }}</p>
+                    </div>
+                    
+                    <div class="product-categories mb-4">
+                        <h5>Categories:</h5>
+                        <div>
+                            {% for category in product.category.all %}
+                                <span class="badge badge-secondary p-2 mr-1">{{ category.name }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="add-to-cart-form">
+                        <form action="{% url 'cart:cart_add' product.id %}" method="post" class="form-inline">
+                            {% csrf_token %}
+                            <div class="form-group mr-2">
+                                <label for="{{ form.quantity.id_for_label }}" class="mr-2">Quantity:</label>
+                                {{ form.quantity }}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .product-image-container {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    .product-image-container img {
+        max-height: 400px;
+        object-fit: contain;
+        width: 100%;
+    }
+    .product-details {
+        height: 100%;
+    }
+    .badge {
+        font-size: 0.9rem;
+    }
+</style>
 {% endblock %}

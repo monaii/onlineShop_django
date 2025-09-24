@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
-{% load thumbnail %}
-
 
 {% block content %}
     {% for category in categories %}
-
         <div class="btn-group">
             <a href="{{ category.get_absolute_url }}" class="btn btn-primary btn-lg">{{ category.name }}</a>
             <button type="button" class="btn btn-primary btn-lg dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
@@ -18,14 +15,61 @@
 
     <br/><br/><br/>
 
-    {% for product in products %}
-        <div class="card" style="width: 18rem; display:inline-block">
-            {% thumbnail product.image "300x300" as img %}
-            <img src="{{ img.url }}" class="card-img-top">
-            {% endthumbnail %}
-            <div class="card-body">
-                <a href="{{ product.get_absolute_url }}" class="card-title">{{ product.name }}</a>
+    <div class="product-grid">
+        {% for product in products %}
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="{{ product.image.url }}" class="product-image" alt="{{ product.name }}">
+                </div>
+                <div class="card-body">
+                    <a href="{{ product.get_absolute_url }}" class="card-title">{{ product.name }}</a>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+
+<style>
+    .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .product-card {
+        width: 250px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        background-color: white;
+    }
+    
+    .product-image-container {
+        height: 250px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        padding: 10px;
+    }
+    
+    .product-image {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+    
+    .card-body {
+        padding: 15px;
+        text-align: center;
+    }
+    
+    .card-title {
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+    }
+</style>
 {% endblock %}

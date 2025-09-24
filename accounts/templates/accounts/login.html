@@ -1,10 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>Login page</p>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <input type="submit" class="btn btn-primary" value="Login">
-    </form>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0 text-center">Login to Your Account</h3>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="form-group row mb-3">
+                            <label for="{{ form.username.id_for_label }}" class="col-md-4 col-form-label text-md-right">Username</label>
+                            <div class="col-md-8">
+                                {{ form.username.errors }}
+                                <input type="text" name="{{ form.username.html_name }}" class="form-control {% if form.username.errors %}is-invalid{% endif %}" 
+                                    id="{{ form.username.id_for_label }}" required value="{{ form.username.value|default:'' }}">
+                                <div class="invalid-feedback">
+                                    Please enter your username.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row mb-3">
+                            <label for="{{ form.password.id_for_label }}" class="col-md-4 col-form-label text-md-right">Password</label>
+                            <div class="col-md-8">
+                                {{ form.password.errors }}
+                                <input type="password" name="{{ form.password.html_name }}" class="form-control {% if form.password.errors %}is-invalid{% endif %}" 
+                                    id="{{ form.password.id_for_label }}" required>
+                                <div class="invalid-feedback">
+                                    Please enter your password.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row mb-4">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                    <i class="fas fa-sign-in-alt"></i> Login
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <p>Don't have an account? <a href="{% url 'accounts:register' %}" class="text-primary">Register here</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

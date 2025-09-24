@@ -1,11 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from shop.models import Product
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Order(models.Model):
-	user = models.ForeignKey(User,on_delete=models.CASCADE, related_name='orders')
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='orders')
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 	paid = models.BooleanField(default=False)

@@ -1,8 +1,7 @@
 from django.db import models
-#from django.contrib.auth.models import AbstractBaseUser
-#from .managers import MyUserManager
+from django.contrib.auth.models import AbstractBaseUser
+from .managers import MyUserManager
 
-"""
 class User(AbstractBaseUser):
 	email = models.EmailField(max_length=100, unique=True)
 	full_name = models.CharField(max_length=100)
@@ -23,4 +22,4 @@ class User(AbstractBaseUser):
 
 	@property
 	def is_staff(self):
-		return self.is_admin"""
+		return self.is_admin
