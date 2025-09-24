@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Online Shop - Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .screenshot {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .status {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛒 Django Online Shop</h1>
+            <p>A full-featured e-commerce platform built with Django</p>
+            <div class="status">✅ Project Complete & Working</div>
+        </div>
+        
+        <div class="demo-card">
+            <h2 style="text-align: center; color: #667eea; margin-bottom: 20px;">Project Overview</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 20px;">
+                A comprehensive online shopping platform with user authentication, product catalog, 
+                shopping cart functionality, and order management system.
+            </p>
+            
+            <div class="tech-stack">
+                <span class="tech-tag">Django 4.0</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">SQLite</span>
+                <span class="tech-tag">HTML/CSS</span>
+                <span class="tech-tag">Bootstrap</span>
+                <span class="tech-tag">JavaScript</span>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>🔐 User Authentication</h3>
+                <p>Complete user registration, login, and profile management system with custom user model.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>🛍️ Product Catalog</h3>
+                <p>Dynamic product listing with categories, detailed product pages, and image management.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>🛒 Shopping Cart</h3>
+                <p>Session-based cart functionality with add, remove, and quantity update features.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📦 Order Management</h3>
+                <p>Complete order processing system with order history and status tracking.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>📱 Responsive Design</h3>
+                <p>Mobile-friendly interface that works seamlessly across all devices.</p>
+            </div>
+            
+            <div class="feature">
+                <h3>⚡ Performance</h3>
+                <p>Optimized database queries and efficient image handling for fast loading.</p>
+            </div>
+        </div>
+        
+        <div class="demo-card">
+            <h2 style="text-align: center; color: #667eea; margin-bottom: 20px;">Key Features Implemented</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✅ Custom User Authentication System</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✅ Product Management with Categories</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✅ Shopping Cart with Session Management</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✅ Order Processing and History</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✅ Responsive Product Grid Layout</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✅ Image Upload and Management</li>
+                <li style="padding: 10px 0; border-bottom: 1px solid #eee;">✅ Database Migrations and Models</li>
+                <li style="padding: 10px 0;">✅ Admin Panel Integration</li>
+            </ul>
+        </div>
+        
+        <div class="buttons">
+            <a href="https://github.com/monaii/onlineShop_django" class="btn btn-primary" target="_blank">
+                📂 View Source Code
+            </a>
+            <a href="https://github.com/monaii/onlineShop_django/blob/main/README.md" class="btn btn-secondary" target="_blank">
+                📖 Documentation
+            </a>
+        </div>
+        
+        <div class="demo-card" style="margin-top: 40px;">
+            <h2 style="text-align: center; color: #667eea; margin-bottom: 20px;">🚀 Ready to Deploy</h2>
+            <p style="text-align: center; font-size: 1.1rem;">
+                This project is fully functional and ready for deployment to platforms like Heroku, 
+                PythonAnywhere, or any Django-compatible hosting service.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
