@@ -110,3 +110,9 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 # Custom user model
 AUTH_USER_MODEL = 'accounts.User'
+
+# Import local settings if available (for deployment)
+try:
+    from .local_settings import *
+except ImportError:
+    pass
