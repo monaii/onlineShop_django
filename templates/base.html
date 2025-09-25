@@ -4,6 +4,46 @@
 <meta charset="UTF-8">
 <title>Online Shop</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+<style>
+    /* Fix dropdown positioning and visibility */
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 10rem;
+        padding: 0.5rem 0;
+        margin: 0.125rem 0 0;
+        font-size: 1rem;
+        color: #212529;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 0.25rem;
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,.175);
+    }
+    
+    .dropdown-menu.show {
+        display: block;
+    }
+    
+    .btn-group {
+        position: relative;
+        display: inline-flex;
+        vertical-align: middle;
+    }
+    
+    .category-navigation {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+</style>
 </head>
 <body>
 
@@ -18,5 +58,34 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<script>
+// Fix dropdown functionality
+$(document).ready(function() {
+    // Handle dropdown toggle
+    $('.dropdown-toggle').on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Close other dropdowns
+        $('.dropdown-menu').removeClass('show');
+        
+        // Toggle current dropdown
+        $(this).next('.dropdown-menu').toggleClass('show');
+    });
+    
+    // Close dropdown when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.dropdown').length) {
+            $('.dropdown-menu').removeClass('show');
+        }
+    });
+    
+    // Prevent dropdown from closing when clicking inside
+    $('.dropdown-menu').on('click', function(e) {
+        e.stopPropagation();
+    });
+});
+</script>
 </body>
 </html>
