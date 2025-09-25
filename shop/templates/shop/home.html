@@ -19,7 +19,11 @@
         {% for product in products %}
             <div class="product-card">
                 <div class="product-image-container">
-                    <img src="{{ product.image.url }}" class="product-image" alt="{{ product.name }}">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="product-image" alt="{{ product.name }}">
+                    {% else %}
+                        <div class="no-image-placeholder">No Image</div>
+                    {% endif %}
                 </div>
                 <div class="card-body">
                     <a href="{{ product.get_absolute_url }}" class="card-title">{{ product.name }}</a>
@@ -59,6 +63,19 @@
         max-height: 100%;
         max-width: 100%;
         object-fit: contain;
+    }
+    
+    .no-image-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        background-color: #f8f9fa;
+        color: #6c757d;
+        font-size: 16px;
+        border: 2px dashed #dee2e6;
+        border-radius: 4px;
     }
     
     .card-body {
